@@ -1,12 +1,13 @@
 <div class='container'>
-<div class='row pt-4'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
+<div class='pt-4'>
     <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員情報編集" %></h4>
 </div>
 
-<div class='row pt-5'>
-<div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
-
+<div class="px-3">
  <%= form_with model: @costomer,method: :patch, url: admin_customer_path(@customer) do |f|%>
+ <div class="form-group">
   <table class="table table-borderless">
   <tbody>
     <tr>
@@ -15,45 +16,48 @@
     </tr>
     <tr>
       <td>氏名</td>
-      <td><%= f.text_field :first_name,placeholder: "#{@customer.first_name}" %>&emsp;<%= f.text_field :last_name,placeholder: "#{@customer.last_name}" %></td>
+      <td><%= f.text_field :first_name,value: "#{@customer.first_name}",class: 'form-control' %></td>
+      <td><%= f.text_field :last_name,value: "#{@customer.last_name}" ,class: 'form-control'%></td>
     </tr>
     <tr>
       <td>フリガナ</td>
-      <td><%= f.text_field :first_name_kana ,placeholder: "#{@customer.first_name_kana}" %>&emsp;<%= f.text_field :last_name_kana,placeholder: "#{@customer.last_name_kana}" %></td>
+      <td><%= f.text_field :first_name_kana ,value: "#{@customer.first_name_kana}",class: 'form-control' %></td>
+      <td><%= f.text_field :last_name_kana,value: "#{@customer.last_name_kana}" ,class: 'form-control'%></td>
     </tr>
     <tr>
       <td>郵便番号</td>
-      <td><%= f.text_field :post_code ,placeholder: "#{@customer.post_code}" %></td>
+      <td><%= f.text_field :post_code ,value: "#{@customer.post_code}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>住所</td>
-      <td><%= f.text_field :address ,placeholder: "#{@customer.address}" %></td>
+      <td colspan="2"><%= f.text_field :address ,value: "#{@customer.address}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>電話番号</td>
-      <td><%= f.text_field :telephone_number ,placeholder: "#{@customer.telephone_number}" %></td>
+      <td><%= f.text_field :telephone_number ,value: "#{@customer.telephone_number}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>メールアドレス</td>
-      <td><%= f.email_field :email ,placeholder: "#{@customer.email}" %>
+      <td><%= f.email_field :email ,value: "#{@customer.email}",class: 'form-control' %>
     </tr>
     <tr>
       <td>会員ステータス</td>
-      <td><%= f.radio_button :membership_status, :true %>
-          <%= f.label :membership_status, "有効", {value: :true, style: "display: inline-block;"} %>&emsp;
-          <%= f.radio_button :membership_status, :false %>
-          <%= f.label :membership_status, "退会", {value: :false, style: "display: inline-block;"} %>
+      <td><%= f.radio_button :membership_status, :true, :checked => params[:membership_status] == (true)%>
+          <%= f.label :membership_status, "有効", {value: :true} %>&emsp;
+          <%= f.radio_button :membership_status, :false, :checked => params[:membership_status] == (false) %>
+          <%= f.label :membership_status, "退会", {value: :false} %>
       </td>
     </tr>
     <tr>
       <td></td>
-      <td><%=f.submit "変更を保存", class: "btn btn-success"%></td>
+      <td><%=f.submit "変更を保存", class: "btn btn-success px-5"%></td>
     </tr>
 
   </tbody>
   </table>
+</div>
 <%end%>
-
+</div>
 
 </div>
 </div>

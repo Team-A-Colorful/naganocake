@@ -1,28 +1,32 @@
 <div class='container'>
-<div class='row pt-3'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-7 col-lg-7 px-sm-0 mx-auto">
+
+  <div class='py-3'>
     <h4 class="bg-light">管理者ログイン</h4>
-</div>
-  
-<div class='row'>
-<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  </div>
+
+  <div class="px-4">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control'%>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :パスワード %>
-        <%= f.password_field :password, autocomplete: "current-password" ,class: 'form-control'%>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "ログイン", class: 'btn btn-primary' %>
-      </div>
+    <div class="form-group">
+    <table class="table table-borderless px-5">
+    <tbody>
+      <tr>
+        <td><%= f.label :メールアドレス %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control'%></td>
+      </tr>
+      <tr>
+        <td><%= f.label :パスワード %></td>
+        <td><%= f.password_field :password, autocomplete: "current-password" ,class: 'form-control'%></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "ログイン", class: 'btn btn-primary px-5' %></td>
+      </tr>
+     </tbody>
+    </table>
     <% end %>
-
-    <%= render "admin/shared/links" %>
-
+  </div>
 
 </div>
 </div>
