@@ -23,12 +23,16 @@
         </div>
       </div>
 
-      <h2>新着商品</h2>
+      <h2 class="pt-3">新着商品</h2>
+      <div class="row">
         <% @items.each do |item| %>
-          <%= image_tag "no_image.jpg" %><br>
+        <div class="col">
+          <%= image_tag "cake.jpg", size: "200x150" %><br>
           <%= item.name %><br>
           ￥<%= item.price %>
+        </div>
         <% end %>
+      </div>
       <%= link_to "全ての商品を見る＞", items_path, class: "nav-link text-right" %>
     </div>
   </div>
