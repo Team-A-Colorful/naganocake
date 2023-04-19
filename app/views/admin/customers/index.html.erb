@@ -18,13 +18,13 @@
   <tbody>
     <% @customers.each do |customer| %>
     <tr>
-      <th><%= link_to"#{customer.id}",admin_customer_path(customer),class: "text-decoration-none stretched-link text-reset"%></th>
-      <td><%= "#{customer.first_name}"+"#{customer.last_name}" %></td>
+      <td><%= customer.id %></td>
+      <td><%= link_to "#{customer.first_name}"+"#{customer.last_name}" ,admin_customer_path(customer),class: "text-decoration-none"%></td>
       <td><%= customer.email %></td>
       <td><% if customer.membership_status == true %>
-            <P>有効</P>
+            <P class="text-success">有効</P>
            <% else %>
-            <P>退会</P>
+            <P class="text-danger">退会</P>
            <%end%>
            </td>
     </tr>
