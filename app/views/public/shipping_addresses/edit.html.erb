@@ -1,2 +1,39 @@
-<h1>Public::ShippingAddresses#edit</h1>
-<p>Find me in app/views/public/shipping_addresses/edit.html.erb</p>
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+
+<div class='p-4'>
+    <h4 class="bg-light">配送先編集</h4>
+</div>
+
+<div class="px-3">
+ <%= form_with model: @shipping_address do |f|%>
+ <div class="form-group">
+  <table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td>郵便番号（ハイフンなし）</td>
+      <td><%= f.text_field :post_code ,value: "#{@shipping_address.post_code}",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td colspan="4"><%= f.text_field :address ,value: "#{@shipping_address.address}",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :address_label ,value: "#{@shipping_address.address_label}",class: 'form-control' %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%=f.submit "変更内容を保存", class: "btn btn-success px-5"%></td>
+    </tr>
+
+  </tbody>
+  </table>
+</div>
+<%end%>
+</div>
+
+</div>
+</div>
+</div>
