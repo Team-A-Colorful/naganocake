@@ -1,22 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h4>ジャンル検索</h4>
+      <div class="card mt-5">
+        <h6 class="card-header">ジャンル検索</h6>
+        <div class="card-body">
+          <% @genres.each do |genre| %>
+            <p class="card-text"><%= genre.name %></p><br>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col-md-8 offset-md-1">
-      <div class="mainvisual"></div>
-      <p>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります<br>
-        会員ではない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要にます。<br>
-      </p>
+      <div class="card mt-5">
+        <%= image_tag "cake.jpg", size: "600x400", class:"card-img" %>
+        <div class="card-img-overlay">
+          <p class="card-text text-center text-white pt-5">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります<br>
+            会員ではない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要にます。<br>
+          </p>
+        </div>
+      </div>
 
       <h2>新着商品</h2>
-      <div class="row">
-
-      </div>
-      <p>全ての商品を見る＞</p>
+        <% @items.each do |item| %>
+          <%= image_tag "no_image.jpg" %><br>
+          <%= item.name %><br>
+          ￥<%= item.price %>
+        <% end %>
+      <%= link_to "全ての商品を見る＞", items_path, class: "nav-link text-right" %>
     </div>
   </div>
 </div>
