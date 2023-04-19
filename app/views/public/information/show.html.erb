@@ -1,0 +1,47 @@
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
+  
+<div class='pt-4'>
+  <h4 class="bg-light">マイページ</h4>
+</div>
+
+<div class="ml-4 buttons_and_table">
+<h4 class="d-inline-block pr-5 mb-3">登録情報</h4><%=link_to "編集する",edit_customers_information_path, class: "btn btn-success px-3 mb-3 d-inline-block"%>
+  <table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>氏名</td>
+      <td colspan="2"><%= "#{@customer.first_name}"+"#{@customer.last_name}" %></td>
+    </tr>
+    <tr>
+      <td>カナ</td>
+      <td colspan="2"><%= "#{@customer.first_name_kana}"+"#{@customer.last_name_kana}" %></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td colspan="2"><%= @customer.post_code %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td colspan="2"><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td colspan="2"><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </tbody>
+  </table>
+
+<h5 class="d-inline-block pr-5 my-4">配送先&emsp;</h5><%=link_to "一覧を見る",shipping_addresses_path, class: "btn btn-primary px-4 my-4 d-inline-block"%></br>
+
+<h5 class="d-inline-block pr-5">注文履歴</h5><%=link_to "一覧を見る",orders_path, class: "btn btn-primary px-4 d-inline-block"%>
+</div>
+
+</div>
+</div>
+</div> 
