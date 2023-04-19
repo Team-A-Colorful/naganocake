@@ -1,2 +1,69 @@
-<h1>Public::ShippingAddresses#index</h1>
-<p>Find me in app/views/public/shipping_addresses/index.html.erb</p>
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+
+<div class='pt-4'>
+    <h4 class="bg-light">配送先登録/一覧</h4>
+</div>
+
+　<!--以下は登録フォーム-->
+
+<div class="px-3">
+ <%= form_with model: @shipping_address do |f|%>
+ <div class="form-group">
+  <table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td>郵便番号（ハイフンなし）</td>
+      <td><%= f.text_field :post_code ,placeholder: "0000000",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td colspan="4"><%= f.text_field :address ,placeholder: "東京都渋谷区代々木神園町0-0",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :address_label ,placeholder: "令和道子",class: 'form-control' %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%=f.submit "新規登録", class: "btn btn-success px-5"%></td>
+    </tr>
+
+  </tbody>
+  </table>
+</div>
+<%end%>
+</div>
+
+<!--以下は一覧表-->
+
+<div class="px-3 pt-5 float-left">
+
+  <table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipping_addresses.each do |shipping_address| %>
+    <tr>
+      <td><%= shipping_address.post_code %></td>
+      <td><%= shipping_address.address %></td>
+      <td><%= shipping_address.address_label %></td>
+      <td class="text-center"><%=link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-success d-inline-block" %>
+          <%=link_to "削除する", shipping_address_path(shipping_address), method: :delete, class: "btn btn-danger d-inline-block" %></td>
+    </tr>
+   <%end%>
+  </tbody>
+</table>
+
+</div>
+
+</div>
+</div>
+</div>
