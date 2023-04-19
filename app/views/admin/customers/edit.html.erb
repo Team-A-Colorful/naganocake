@@ -6,7 +6,7 @@
 </div>
 
 <div class="px-3">
- <%= form_with model: @costomer, method: :patch, url: admin_customer_path do |f|%>
+ <%= form_with model: @customer,method: :patch, url: admin_customer_path(@customer) do |f|%>
  <div class="form-group">
   <table class="table table-borderless">
   <tbody>
@@ -16,33 +16,37 @@
     </tr>
     <tr>
       <td>氏名</td>
-      <td><%= f.text_field :first_name, value: "#{@customer.first_name}",class: 'form-control' %></td>
-      <td><%= f.text_field :last_name, value: "#{@customer.last_name}" ,class: 'form-control'%></td>
+      <td><%= f.text_field :first_name,value: "#{@customer.first_name}",class: 'form-control' %></td>
+      <td><%= f.text_field :last_name,value: "#{@customer.last_name}" ,class: 'form-control'%></td>
     </tr>
     <tr>
       <td>フリガナ</td>
-      <td><%= f.text_field :first_name_kana, value: "#{@customer.first_name_kana}",class: 'form-control' %></td>
-      <td><%= f.text_field :last_name_kana, value: "#{@customer.last_name_kana}" ,class: 'form-control'%></td>
+      <td><%= f.text_field :first_name_kana ,value: "#{@customer.first_name_kana}",class: 'form-control' %></td>
+      <td><%= f.text_field :last_name_kana,value: "#{@customer.last_name_kana}" ,class: 'form-control'%></td>
     </tr>
     <tr>
       <td>郵便番号</td>
-      <td><%= f.text_field :post_code, value: "#{@customer.post_code}",class: 'form-control' %></td>
+      <td><%= f.text_field :post_code ,value: "#{@customer.post_code}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>住所</td>
-      <td colspan="2"><%= f.text_field :address, value: "#{@customer.address}",class: 'form-control' %></td>
+      <td colspan="2"><%= f.text_field :address ,value: "#{@customer.address}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>電話番号</td>
-      <td><%= f.text_field :telephone_number, value: "#{@customer.telephone_number}",class: 'form-control' %></td>
+      <td><%= f.text_field :telephone_number ,value: "#{@customer.telephone_number}",class: 'form-control' %></td>
     </tr>
     <tr>
       <td>メールアドレス</td>
-      <td><%= f.email_field :email, value: "#{@customer.email}",class: 'form-control' %>
+      <td><%= f.email_field :email ,value: "#{@customer.email}",class: 'form-control' %>
     </tr>
     <tr>
       <td>会員ステータス</td>
-      <td><%= f.hidden_field :membership_status, value: @customer.membership_status %> </td>
+      <td><%= f.radio_button :membership_status, :true %>
+          <%= f.label :membership_status, "有効" %>&emsp;
+          <%= f.radio_button :membership_status, :false %>
+          <%= f.label :membership_status, "退会" %>
+      </td>
     </tr>
     <tr>
       <td></td>
