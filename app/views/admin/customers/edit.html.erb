@@ -6,7 +6,7 @@
 </div>
 
 <div class="px-3">
- <%= form_with model: @costomer,method: :patch, url: admin_customer_path(@customer) do |f|%>
+ <%= form_with model: @customer,method: :patch, url: admin_customer_path(@customer) do |f|%>
  <div class="form-group">
   <table class="table table-borderless">
   <tbody>
@@ -42,10 +42,10 @@
     </tr>
     <tr>
       <td>会員ステータス</td>
-      <td><%= f.radio_button :membership_status, :true, :checked => params[:membership_status] == (true)%>
-          <%= f.label :membership_status, "有効", {value: :true} %>&emsp;
-          <%= f.radio_button :membership_status, :false, :checked => params[:membership_status] == (false) %>
-          <%= f.label :membership_status, "退会", {value: :false} %>
+      <td><%= f.radio_button :membership_status, :true %>
+          <%= f.label :membership_status, "有効" %>&emsp;
+          <%= f.radio_button :membership_status, :false %>
+          <%= f.label :membership_status, "退会" %>
       </td>
     </tr>
     <tr>
