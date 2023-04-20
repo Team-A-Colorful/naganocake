@@ -17,9 +17,9 @@
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
-    <tr>
+    <tr class="customer_index_tbody_tr" data-href="/admin/customers/<%= customer.id%>">
       <td><%= customer.id %></td>
-      <td><%= link_to "#{customer.first_name}"+"#{customer.last_name}" ,admin_customer_path(customer),class: "text-decoration-none"%></td>
+      <td><%= customer.first_name + customer.last_name %></td>
       <td><%= customer.email %></td>
       <td><% if customer.membership_status == true %>
             <P class="text-success">有効</P>
@@ -33,8 +33,15 @@
   </tbody>
 </table>
 
+</div>
+</div>
+</div>
 
-
-</div>
-</div>
-</div>
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".customer_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+  
+</script>

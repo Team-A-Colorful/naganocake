@@ -4,8 +4,8 @@
   <div class="py-4">
     <h4 class="bg-light">注文履歴一覧</h4>
   </div>
-  
-  <table class="table">
+
+  <table class="table table-hover">
   <thead class="thead-light">
     <tr>
       <th>購入日時</th>
@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-    <tr>
+    <tr class="order_index_tbody_tr" data-href="/admin/orders/<%= order.id%>">
       <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
       <td><%= "#{order.customer.first_name}"+"#{order.customer.last_name}" %></td>
       <td>!!</td>
@@ -27,8 +27,15 @@
   </tbody>
 </table>
 
+</div>
+</div>
+</div>
 
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".order_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
 
-</div>
-</div>
-</div>
+</script>
