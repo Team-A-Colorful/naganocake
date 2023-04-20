@@ -10,7 +10,7 @@
   </div>
   <div class="col">
     <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-      <table class=table>
+      <table class="table">
         <tr>
           <th>購入者</th>
           <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <th>支払方法</th>
-          <td><%= @order.pay_option_i18n %></td>
+          <td><%= @order.pay_option_i18n if @order.pay_option.present? %></td>
         </tr>
         <tr>
           <th>注文ステータス</th>

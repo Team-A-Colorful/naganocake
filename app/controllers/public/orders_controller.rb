@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
+    @shipping_addresses = ShippingAddress.all
   end
 
   def create
@@ -24,14 +25,14 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
-      @order.delivery_post_code = current_customer.postal_code
+      @order.delivery_post_code = current_customer.post_code
       @order.delivery_address = current_customer.address
       @order.delivery_address_label = current_customer.first_name + current_customer.last_name
     elsif params[:order][:select_address] == "1"
-       @address = Address.find(params[:order][:address_id])
-       @order.delivery_post_code = @address.postal_code
-       @order.delivery_address = @address.address
-       @order.delivery_address_label = @address.name
+       @shipping_address = ShippingAddress.find(params[:order][:address_id])
+       @order.delivery_post_code = @shipping_address.post_code
+       @order.delivery_address = @shipping_address.address
+       @order.delivery_address_label = @shipping_address.address_label
     elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     end

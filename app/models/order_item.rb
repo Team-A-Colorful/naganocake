@@ -1,7 +1,7 @@
 class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
-  
+
   enum work_status:
   {
     impossible_work:0,
