@@ -1,6 +1,15 @@
 <div class='container'>
 <div class='row pt-5'>
 <div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+  
+<% if @shipping_address.errors.any? %>
+<%= @shipping_address.errors.count %>件のエラーが発生しました
+<ul>
+  <% @shipping_address.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <div class='p-4'>
     <h4 class="bg-light">配送先編集</h4>
