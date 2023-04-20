@@ -5,6 +5,9 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   attachment :image
 
+  validates :name,presence:true
+  validates :introduction,presence:true
+  validates :price,presence:true
 
   #税込価格を計算するためのメソットです。
   #viewページで下記のように呼び出してもらえれば表示できます。

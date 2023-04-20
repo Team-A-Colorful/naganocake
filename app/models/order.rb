@@ -2,6 +2,11 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
+  
+  validates :delivery_post_code,presence:true
+  validates :delivery_address,presence:true
+  validates :delivery_address_label,presence:true
+  validates :pay_option,presence:true
 
   enum order_status: {
     "入金待ち":0,
