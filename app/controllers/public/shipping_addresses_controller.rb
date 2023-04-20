@@ -1,4 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @customer = current_customer
     @shipping_address = ShippingAddress.new
@@ -31,6 +32,6 @@ class Public::ShippingAddressesController < ApplicationController
   
    def shipping_address_params
     params.require(:shipping_address).permit(:address_label, :post_code, :address)
-  end
+   end
   
 end
