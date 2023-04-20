@@ -3,13 +3,8 @@
 <div class="col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
   
 <% if @customer.errors.any? %>
-<%= @customer.errors.count %>件のエラーが発生しました
-<ul>
-  <% @customer.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
+<%= render 'layouts/error_messages', model: @customer %>
+<%end%>
   
 <div class=' row py-4'>
     <h4 class="bg-light">会員情報編集</h4>
