@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
     current_customer.cart_items.each do |cart_item|
@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
       @order_item.item_id = cart_item.item_id
       @order_item.count = cart_item.count
       @order_item.order_price = (cart_item.item.price*1.1).floor
+      @order_item.work_status = 1
       @order_item.save
     end
     current_customer.cart_items.destroy_all
@@ -53,7 +54,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:shipping_fee, :total_price, :payment_method, :delivery_post_code, :delivery_address, :delivery_address_label)
+    params.require(:order).permit(:customer_id, :shipping_fee, :total_price, :pay_option, :delivery_post_code, :delivery_address, :delivery_address_label, :order_status)
   end
 end
 
