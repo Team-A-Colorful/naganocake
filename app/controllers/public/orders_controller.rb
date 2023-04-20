@@ -5,10 +5,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    redirect_to order_confirm_path
+    current_customer.cart_items.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.order_id =  @order.id
+      @order_item.item_id = cart_item.item_id
+      @order_item.count = cart_item.count
+      @order_item.order_price = (cart_item.item.price*1.1).floor
+      @order_item.work_status = 1
+      @order_item.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to orders_completed_path
   end
 
   def confirm
@@ -29,6 +39,7 @@ class Public::OrdersController < ApplicationController
     else
       render 'new'
     end
+    @cart_items = current_customer.cart_items.all
   end
 
   def completed
@@ -37,10 +48,13 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :delivery_post_code, :delivery_address, :delivery_address_label)
+    params.require(:order).permit(:customer_id, :shipping_fee, :total_price, :pay_option, :delivery_post_code, :delivery_address, :delivery_address_label, :order_status)
   end
 end
 
