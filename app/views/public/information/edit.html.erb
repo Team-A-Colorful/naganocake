@@ -2,14 +2,13 @@
 <div class='row pt-5'>
 <div class="col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
   
-<div class='pt-4'>
+<div class=' row py-4'>
     <h4 class="bg-light">会員情報編集</h4>
 </div>
 
-<div class="px-3">
  <%= form_with model: @customer,method: :patch, url: customers_information_path do |f|%>
  <div class="form-group">
-  <table class="table table-borderless">
+  <table class="table table-borderless ml-5">
   <tbody>
     <tr>
       <td>氏名</td>
@@ -48,7 +47,6 @@
   </table>
 </div>
 <%end%>
-</div>
 
 </div>
 </div>

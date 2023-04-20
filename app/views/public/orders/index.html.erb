@@ -1,12 +1,12 @@
 <div class='container'>
 <div class='row pt-5'>
-<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
-  
-  <div class="py-4">
+<div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+
+  <div class='row pt-4'>
     <h4 class="bg-light">注文履歴一覧</h4>
   </div>
-  
-  <table class="table">
+
+  <table class="table table-hover">
   <thead class="thead-light">
     <tr>
       <th>注文日</th>
@@ -19,14 +19,14 @@
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-    <tr>
+    <tr class="order_index_tbody_tr" data-href="/orders/<%= order.id%>">
       <th><%= order.created_at.to_s(:date_jp) %></th>
-      
+
       <td>〒<%= order.delivery_post_code %><br>
           <%= order.delivery_address %><br>
           <%= order.delivery_address_label %>
       </td>
-      
+
       <td><% order.order_items.each do |order_item|%>
             <%= order_item.item.name %>  <!--order_itemに紐づくitemのnameをeachで順に表示-->
           <%end%>
@@ -40,8 +40,15 @@
   </tbody>
 </table>
 
+</div>
+</div>
+</div>
 
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".order_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
 
-</div>
-</div>
-</div>
+</script>
