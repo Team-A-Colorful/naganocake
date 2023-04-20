@@ -20,13 +20,13 @@
 
           <%= f.radio_button :address_option, 1 %>
           <%= f.label :address_number_2, "登録済み住所から選択" %>
-          <%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %><br>
+          <%= f.select :shipping_address_id, options_from_collection_for_select(current_customer.shipping_addresses, :id, :address_display) %><br>
 
           <%= f.radio_button :address_option, 2 %>
           <%= f.label :address_number_3, "新しいお届け先" %><br>
-          郵便番号<%= f.text_field :post_code %><br>
-          住所<%= f.text_field :address %><br>
-          宛名<%= f.text_field :address_label %><br>
+          郵便番号<%= f.text_field :delivery_post_code %><br>
+          住所<%= f.text_field :delivery_address %><br>
+          宛名<%= f.text_field :delivery_address_label %><br>
           <%= f.submit '確認画面へ進む' %>
         <% end %>
       </div>
