@@ -1,56 +1,39 @@
- ja:
-    enums:
-      order:
-        pay_option:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
-  
-    activerecord:
-      attributes:
-        admin:
-          email: メールアドレス
-          password: パスワード
-          
-        customer:
-          first_name: 姓
-          last_name: 名
-          first_name_kana: セイ
-          last_name_kana: メイ
-          post_code: 郵便番号
-          address: 住所
-          telephone_number: 電話番号
-          email: メールアドレス
-          password: パスワード
-          
-        shipping_address:
-          address_label: 宛名
-          post_code: 郵便番号
-          address: 住所
-          
-        genre:
-          name: ジャンル名
-          
-        item:
-          name: 商品名
-          introduction: 紹介文
-          price: 価格
-          image: 画像
-          
-        cart_item:
-          count: 数量
-          
-        order:
-          delivery_post_code: 郵便番号
-          delivery_address: 住所
-          delivery_address_label: 宛名
-          
-        order_item:
-          count: 個数
-      errors:
-        messages:
-          invalid: "%{attribute}が正しくありません。"
-    
 ja:
+  activerecord:
+    attributes:
+      admin:
+        email: メールアドレス
+        password: パスワード
+      customer:
+        first_name: 姓
+        last_name: 名
+        first_name_kana: セイ
+        last_name_kana: メイ
+        post_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+      shipping_address:
+        address_label: 宛名
+        post_code: 郵便番号
+        address: 住所
+      genre:
+        name: ジャンル名
+      item:
+        name: 商品名
+        introduction: 紹介文
+        price: 価格
+        image: 画像
+      cart_item:
+        count: 数量
+      order:
+        delivery_post_code: 郵便番号
+        delivery_address: 住所
+        delivery_address_label: 宛名
+        pay_option: 支払方法
+      order_item:
+        count: 個数
   enums:
     order:
       order_status:
@@ -68,3 +51,6 @@ ja:
         waiting_work: '製作待ち'
         working: '製作中'
         finish: '製作完了'
+  errors:
+    messages:
+      invalid: "%{attribute}が正しくありません。"
