@@ -15,6 +15,15 @@
         <h3>
           ¥ <%= @item.add_tax_sales_price.to_s(:delimited) %> (税込)
         </h3>
+        <!--エラーメッセージ-->
+            <% if flash[:error].present? %>   
+          　　<ul class="errors">
+            　　<% flash[:error].each do |e| %>
+             　　　　 <li><%= e %></li>
+            　　<% end %>
+         　　   </ul>
+      　　    <% end %>
+    　   <!--ここまでエラーメッセージ-->
         <br>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>

@@ -25,6 +25,7 @@ ja:
         introduction: 紹介文
         price: 価格
         image: 画像
+        genre: ジャンル
       cart_item:
         count: 数量
       order:

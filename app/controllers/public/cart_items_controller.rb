@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     #保存できなかった場合
     else
-      render :index
+      redirect_to request.referer, flash: { error: @cart_item.errors.full_messages }
     end
   end
 

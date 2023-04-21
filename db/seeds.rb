@@ -16,7 +16,7 @@ Customer.create!(
   last_name_kana: 'ハナコ',
   post_code: '0000000',
   address: 'aaa-bbb-ccc',
-  telephone_number: '11122223333',
+  telephone_number: '09011112222',
   membership_status: true,
   email: 'test@test.com',
   password: 'aaaaaa'
@@ -44,7 +44,7 @@ Order.create!(
   delivery_address_label: "鈴木香織",
   shipping_fee: 300,
   total_price: 1500,
-  pay_option: "銀行振込",
+  pay_option: 1,
   order_status: 1
 )
 OrderItem.create!(

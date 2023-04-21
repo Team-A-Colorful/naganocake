@@ -4,6 +4,11 @@
   </div>
     <div class="row">
       <div class="col-md-8">
+        
+        <% if @order.errors.any? %>
+        <%= render 'layouts/error_messages', model: @order %>
+        <%end%>
+        
         <table class="table table-bordered">
           <thead>
             <tr>

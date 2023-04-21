@@ -1,25 +1,34 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @order = Order.new
-    @shipping_addresses = ShippingAddress.all
+    cart_items = current_customer.cart_items
+    if cart_items.present?
+      @order = Order.new
+      @shipping_addresses = ShippingAddress.all
+    else
+      flash[:notice] = "・カートが空です"
+      redirect_to request.referer
+    end
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    current_customer.cart_items.each do |cart_item|
-      @order_item = OrderItem.new
-      @order_item.order_id =  @order.id
-      @order_item.item_id = cart_item.item_id
-      @order_item.count = cart_item.count
-      @order_item.order_price = (cart_item.item.price*1.1).floor
-      @order_item.work_status = 1
-      @order_item.save
-    end
-    current_customer.cart_items.destroy_all
-    redirect_to orders_completed_path
+   if @order.save
+      current_customer.cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id =  @order.id
+        @order_item.item_id = cart_item.item_id
+        @order_item.count = cart_item.count
+        @order_item.order_price = (cart_item.item.price*1.1).floor
+        @order_item.work_status = 1
+        @order_item.save
+      end
+      current_customer.cart_items.destroy_all
+      redirect_to orders_completed_path
+   else
+     render :confirm
+   end
   end
 
   def confirm
@@ -37,8 +46,12 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
     end
     @cart_items = current_customer.cart_items
-    @order_new = Order.new
-    render :confirm
+   if @order.delivery_post_code && @order.delivery_address && @order.delivery_address_label && @order.pay_option
+     render :confirm
+   else
+     flash[:notice] = "・未入力の項目があります"
+     redirect_to request.referer
+   end
   end
 
   def completed

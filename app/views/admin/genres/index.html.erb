@@ -4,6 +4,11 @@
       <h5 class="bg-light d-flex align-items-center pr-3 pl-3">ジャンル一覧・追加</h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto" >
+
+      <% if @genre.errors.any? %>
+        <%= render 'layouts/error_messages', model: @genre %>
+      <%end%>
+
       <%= form_with model: @genre, url: admin_genres_path, method: :post, local:true do |f| %>
         <div class="form-group mb-5">
           <div class="form-inline">
