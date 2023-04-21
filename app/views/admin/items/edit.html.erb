@@ -4,6 +4,11 @@
       <h5 class="bg-light d-flex align-items-center pr-3 pl-3">商品編集</h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+      <% if @item.errors.any? %>
+        <%= render 'layouts/error_messages', model: @item %>
+      <%end%>
+      
       <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
         <div class="form-group form-inline">
           <%= f.label "商品画像", class: 'w-25 justify-content-start' %>
