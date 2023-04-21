@@ -19,14 +19,14 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr class="bg-white">
-              <td>
+              <td class="align-middle">
                 <%= attachment_image_tag cart_item.item, :image,format: 'jpeg', size: "100x50" %>
                 <%= cart_item.item.name %>
               </td>
-              <td>
+              <td class="align-middle">
                 <%= cart_item.item.add_tax_sales_price.to_s(:delimited) %>
               </td>
-              <td>
+              <td class="align-middle">
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
                   <%= f.hidden_field :item_id, value: cart_item.item.id %>
                   <%= f.hidden_field :customer_id, value: current_customer.id %>
@@ -34,7 +34,7 @@
                   <%= f.submit "変更", class: 'btn btn-success' %>
                 <% end %>
               </td>
-              <td>
+              <td class="align-middle">
                 <%= link_to "削除", cart_item_path(cart_item), method: :delete, class: 'btn btn-danger' %>
               </td>
             </tr>
