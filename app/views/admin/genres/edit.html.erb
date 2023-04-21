@@ -5,6 +5,9 @@
     </div>
     <%= form_with model: @genre, url: admin_genre_path, method: :patch, local:true do |f| %>
       <div class="form-group mb-5">
+        <% if @genre.errors.any? %>
+         <%= render 'layouts/error_messages', model: @genre %>
+        <%end%>
         <div class="form-inline">
           <%= f.label "ジャンル名", class: 'mr-3' %>
           <%= f.text_field :name, :placeholder => "ジャンル名", class: 'form-control mr-3' %>
