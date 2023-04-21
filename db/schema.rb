@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_20_100434) do
+ActiveRecord::Schema.define(version: 2023_04_21_030346) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -91,20 +91,11 @@ ActiveRecord::Schema.define(version: 2023_04_20_100434) do
     t.string "delivery_address_label", null: false
     t.integer "shipping_fee", null: false
     t.integer "total_price", null: false
-    t.string "pay_option", null: false
+    t.integer "pay_option", null: false
     t.integer "order_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
-  end
-
-  create_table "postals", force: :cascade do |t|
-    t.integer "postal_code"
-    t.string "prefecture"
-    t.string "city"
-    t.string "town"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shipping_addresses", force: :cascade do |t|

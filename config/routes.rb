@@ -37,7 +37,7 @@ end
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
-    resources :orders_items, only: [:update]
+    resources :order_items, only: [:update]
   end
 
 
