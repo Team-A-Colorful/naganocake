@@ -26,7 +26,7 @@
           <table class="table table-borderless">
             <tr>
               <th>
-                <%= f.radio_button :address_option, 0, checked: "checked" %>
+                <%= f.radio_button :select_address, 0, checked: "checked" %>
                 <%= f.label :address_number_1, "ご自身の住所" %>
               </th>
               <td>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
               <th>
-                <%= f.radio_button :address_option, 1 %>
+                <%= f.radio_button :select_address, 1 %>
                 <%= f.label :address_number_2, "登録済み住所から選択" %>
               </th>
               <td>
@@ -45,34 +45,33 @@
               </td>
             </tr>
           </table>
-
-              <table class="table table-borderless">
-                <tr>
-                  <th>
-                    <%= f.radio_button :address_option, 2 %>
-                    <%= f.label :address_number_3, "新しいお届け先" %><br>
-                  </th>
-                  <td>郵便番号（ハイフンなし）</td>
-                  <td><%= f.text_field :post_code %></td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td>住所</td>
-                  <td><%= f.text_field :address, size: 30*2 %></td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td>宛名</td>
-                  <td><%= f.text_field :address_label %></td>
-                </tr>
-              </table>
-              <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
-              </div>
-            <% end %>
+          <table class="table table-borderless">
+            <tr>
+              <th>
+                <%= f.radio_button :select_address, 2 %>
+                <%= f.label :address_number_3, "新しいお届け先" %><br>
+              </th>
+              <td>郵便番号（ハイフンなし）</td>
+              <td><%= f.text_field :post_code %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>住所</td>
+              <td><%= f.text_field :address, size: 30*2 %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>宛名</td>
+              <td><%= f.text_field :address_label %></td>
+            </tr>
+          </table>
+          <div class="d-grid gap-2 col-6 mx-auto mt-3">
+            <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
           </div>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>
 
 
