@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
-  
+
   validates :delivery_post_code, format: {with: /\A[0-9]{7}\z/}
   validates :delivery_address,presence:true
   validates :delivery_address_label,presence:true

@@ -21,12 +21,12 @@
                   <%= image_tag 'no_image.jpg' %>
                   <%= cart_item.item.name %>
                 </td>
-                <td><%= (cart_item.item.price*1.1).to_i %></td>
+                <td><%= cart_item.item.add_tax_sales_price %></td>
                 <td><%= cart_item.count %></td>
-                <% subtotal = ((cart_item.item.price*cart_item.count)*1.1).to_i %>
+                <% subtotal = (cart_item.item.add_tax_sales_price*cart_item.count) %>
                 <td><%= subtotal %></td>
               </tr>
-              <% total += (cart_item.item.price*cart_item.count)*1.1 %>
+              <% total += (cart_item.item.add_tax_sales_price*cart_item.count) %>
             <% end %>
           </tbody>
         </table>
