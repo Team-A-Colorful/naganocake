@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
+    @shipping_addresses = ShippingAddress.all
   end
 
   def create
@@ -23,23 +24,21 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:address_option] == "0"
+    if params[:order][:select_address] == "0"
       @order.delivery_post_code = current_customer.post_code
       @order.delivery_address = current_customer.address
-      @order.delivery_address_label = current_customer.first_name
-    elsif params[:order][:address_option] == "1"
-      @shipping_address = ShippingAddress.find(params[:order][:shipping_address_id])
-      @order.delivery_post_code = @shipping_address.post_code
-      @order.delivery_address = @shipping_address.address
-      @order.delivery_address_label = @shipping_address.address_label
-    elsif params[:order][:address_option] = "2"
-      @order.delivery_post_code = params[:order][:shipping_post_code]
-      @order.delivery_address = params[:order][:shipping_address]
-      @order.delivery_address_label = params[:order][:shipping_address_label]
-    else
-      render 'new'
+      @order.delivery_address_label = current_customer.first_name + current_customer.last_name
+    elsif params[:order][:select_address] == "1"
+       @shipping_address = ShippingAddress.find(params[:order][:address_id])
+       @order.delivery_post_code = @shipping_address.post_code
+       @order.delivery_address = @shipping_address.address
+       @order.delivery_address_label = @shipping_address.address_label
+    elsif params[:order][:select_address] == "2"
+      @order.customer_id = current_customer.id
     end
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
+    @order_new = Order.new
+    render :confirm
   end
 
   def completed
@@ -47,10 +46,12 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders=current_customer.orders.all.page(params[:page]).per(10)
-  
+
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
   end
 
   private
