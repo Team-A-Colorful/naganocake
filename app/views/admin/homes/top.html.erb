@@ -20,7 +20,7 @@
     <tr class="order_index_tbody_tr" data-href="/admin/orders/<%= order.id%>">
       <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
       <td><%= "#{order.customer.first_name}"+"#{order.customer.last_name}" %></td>
-      <td>!!</td>
+      <td><%= order.order_items.sum(:count) %></td>
       <td><%=order.order_status %></td>
     </tr>
    <%end%>
