@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 off-set-4" >
-    <h2 class="m-5">ジャンル編集</h2>
+    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto d-flex justify-content-between m-5">
+      <h5 class="bg-light d-flex align-items-center pr-3 pl-3">ジャンル編集</h5>
+    </div>
     <%= form_with model: @genre, url: admin_genre_path, method: :patch, local:true do |f| %>
       <div class="form-group mb-5">
         <div class="form-inline">

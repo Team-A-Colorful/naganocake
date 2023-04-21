@@ -1,12 +1,11 @@
 <div class='container'>
-<div class='row pt-4'>
-    <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員詳細" %></h4>
-</div>
-
 <div class='row pt-5'>
 <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
-
-  <table class="table table-borderless">
+  
+  <div class='row py-4'>
+   <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員詳細" %></h4>
+  </div>
+  <table class="table table-borderless ml-5">
   <tbody>
     <tr>
       <td>会員ID</td>
