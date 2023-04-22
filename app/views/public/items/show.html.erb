@@ -16,7 +16,7 @@
           ¥ <%= @item.add_tax_sales_price.to_s(:delimited) %> (税込)
         </h3>
         <!--エラーメッセージ-->
-            <% if flash[:error].present? %>   
+            <% if flash[:error].present? %>
           　　<ul class="errors">
             　　<% flash[:error].each do |e| %>
              　　　　 <li><%= e %></li>

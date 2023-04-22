@@ -6,13 +6,13 @@
   </div>
     <div class="row">
       <div class="col">
-        
+
          <!--エラーメッセージ（保存しないためフラッシュで実装）-->
           <div>
              <h5><%= flash[:notice] %></h5>
           </div>
       　<!--ここまでエラーメッセージ-->
-        
+
         <%= form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
           <h5>支払方法</h5>
           <table class="table table-borderless">

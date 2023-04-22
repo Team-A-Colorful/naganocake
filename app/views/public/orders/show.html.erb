@@ -35,7 +35,7 @@
       <table class="table table-bordered">
         <tr>
           <th class="table-active">商品合計</th>
-          <td><%= @order.total_price %>円</td>
+          <td><%= @order.order_items.sum { |item| item.order_price * item.count } %>円</td>
         </tr>
         <tr>
           <th class="table-active">送料</th>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
           <th class="table-active">請求金額合計</th>
-          <td><%= @order.total_price + @order.shipping_fee %>円</td>
+          <td><%= @order.total_price %>円</td>
         </tr>
       </table>
     </div>
