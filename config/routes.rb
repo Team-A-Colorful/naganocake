@@ -35,7 +35,9 @@ end
     root 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]do
+      get "order_history" => "customers#order_history"
+    end
     resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
   end

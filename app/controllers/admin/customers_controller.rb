@@ -20,7 +20,13 @@ class Admin::CustomersController < ApplicationController
      render :edit
     end
   end
+  
+  def order_history
+    @customer=Customer.find(params[:customer_id])
+    @orders=@customer.orders.all.page(params[:page]).per(10)
+  end
 
+ 
   private
 
   def customer_params
