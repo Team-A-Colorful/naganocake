@@ -38,11 +38,14 @@ class Public::OrdersController < ApplicationController
       @order.delivery_address = current_customer.address
       @order.delivery_address_label = current_customer.first_name + current_customer.last_name
     elsif params[:order][:select_address] == "1"
-       @shipping_address = ShippingAddress.find(params[:order][:address_id])
-       @order.delivery_post_code = @shipping_address.post_code
-       @order.delivery_address = @shipping_address.address
-       @order.delivery_address_label = @shipping_address.address_label
+      @shipping_address = ShippingAddress.find(params[:order][:shipping_address_id])
+      @order.delivery_post_code = @shipping_address.post_code
+      @order.delivery_address = @shipping_address.address
+      @order.delivery_address_label = @shipping_address.address_label
     elsif params[:order][:select_address] == "2"
+      @order.delivery_post_code = params[:order][:post_code]
+      @order.delivery_address = params[:order][:address]
+      @order.delivery_address_label = params[:order][:address_label]
       @order.customer_id = current_customer.id
     end
     @cart_items = current_customer.cart_items
