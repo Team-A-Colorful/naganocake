@@ -4,11 +4,11 @@
   </div>
     <div class="row">
       <div class="col-md-8">
-        
+
         <% if @order.errors.any? %>
         <%= render 'layouts/error_messages', model: @order %>
         <%end%>
-        
+
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -23,7 +23,7 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= image_tag 'no_image.jpg' %>
+                  <%= attachment_image_tag cart_item.item, :image,format: 'jpeg', size: "100x50" %>
                   <%= cart_item.item.name %>
                 </td>
                 <td><%= cart_item.item.add_tax_sales_price %></td>
