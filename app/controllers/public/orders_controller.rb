@@ -27,6 +27,7 @@ class Public::OrdersController < ApplicationController
       current_customer.cart_items.destroy_all
       redirect_to orders_completed_path
    else
+     @cart_items = current_customer.cart_items
      render :confirm
    end
   end
@@ -51,11 +52,17 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     
    if @order.delivery_post_code && @order.delivery_address && @order.delivery_address_label && @order.pay_option
-     render :confirm
+     if @order.delivery_post_code =~ /\A[0-9]{7}\z/
+       render :confirm
+     else 
+       flash[:notice] = "・郵便番号が正しくありません"
+       redirect_to request.referer
+     end
    else
      flash[:notice] = "・未入力の項目があります"
      redirect_to request.referer
    end
+   
   end
 
   def completed
