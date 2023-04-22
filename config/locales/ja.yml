@@ -54,4 +54,4 @@ ja:
         finish: '製作完了'
   errors:
     messages:
-      invalid: "%{attribute}が正しくありません。"
+      invalid: "が正しくありません。"
