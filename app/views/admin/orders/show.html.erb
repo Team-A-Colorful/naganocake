@@ -55,14 +55,14 @@
         <tbody>
           <% @total = 0 %>
           <% @order_items.each do |order_item| %>
-          <% @total += order_item.item.add_tax_sales_price*order_item.count %>
+          <% @subtotal = order_item.item.add_tax_sales_price * order_item.count %>
+          <% @total += @subtotal %>
           <%= form_with model: order_item, url: admin_order_item_path(order_item.id) , method: :patch , local: true do |f| %>
             <tr>
               <td><%= order_item.item.name %></td>
               <td><%= order_item.item.add_tax_sales_price %>円</td>
               <td><%= order_item.count %></td>
-              <% subtotal = order_item.item.add_tax_sales_price*order_item.count %>
-              <td><%= subtotal %>円</td>
+              <td><%= @subtotal %>円</td>
               <td>
                 <%= f.select :work_status, OrderItem.work_statuses_i18n.invert %>
                 <%= f.submit "更新", class: "btn btn-sm btn-success" %>
