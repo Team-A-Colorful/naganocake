@@ -6,11 +6,6 @@
   </div>
     <div class="row">
       <div class="col">
-        
-        <% if @order.errors.any? %>
-         <%= render 'layouts/error_messages', model: @order %>
-        <%end%>
-        
          <!--エラーメッセージ（保存しないためフラッシュで実装）-->
           <div>
              <h5><%= flash[:notice] %></h5>
