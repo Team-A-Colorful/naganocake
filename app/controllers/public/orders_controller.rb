@@ -50,7 +50,7 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
     end
     @cart_items = current_customer.cart_items
-    
+
    if @order.delivery_post_code && @order.delivery_address && @order.delivery_address_label && @order.pay_option
      if @order.delivery_post_code =~ /\A[0-9]{7}\z/
        render :confirm
