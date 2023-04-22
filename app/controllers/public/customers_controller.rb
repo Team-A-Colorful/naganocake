@@ -11,7 +11,8 @@ class Public::CustomersController < ApplicationController
   
   def resign
     customer = current_customer
-    customer.membership_status = false
+    customer.update(membership_status: 0)
+    reset_session
     redirect_to root_path
   end
 end

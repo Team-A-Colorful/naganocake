@@ -8,7 +8,6 @@ class Customer < ApplicationRecord
   validates :last_name_kana,presence:true
   validates :address,presence:true
   validates :telephone_number,presence:true, format: {with: /\A0\d{9,10}\z/}
-  validates :membership_status,presence:true
   validates :email,presence:true
 
   
