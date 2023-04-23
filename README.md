@@ -23,7 +23,7 @@
 * rails-i18n(for Japanese translation)
 * rubocop
 
-## Author Account
+## Author Accounts
 * https://github.com/orgs/Team-A-Colorful/people/daze573
 * https://github.com/orgs/Team-A-Colorful/people/takahasi103
 * https://github.com/orgs/Team-A-Colorful/people/taku-zfof
