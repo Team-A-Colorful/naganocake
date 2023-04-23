@@ -1,3 +1,21 @@
 #thanks{
   display: none;
 }
+
+.swiper p {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  z-index: 1;
+}
+
+.shadow {
+  box-shadow: none;
+}
+
+p.shadow {
+  font-weight: bold;
+  text-shadow: -1px -1px 0 black, -1px 0 0 black, -1px 1px 0 black,
+                  0 -1px 0 black,                  0 1px 0 black,
+                1px -1px 0 black,  1px 0 0 black,  1px 1px 0 black;
+}

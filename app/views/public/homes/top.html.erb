@@ -2,15 +2,36 @@
   <div class="row">
     <%= render 'public/items/list', genres: @genres %>
     <div class="col-md-9 offset-md-1">
-      <div class="card mt-5">
-        <%= image_tag "cake.jpg", size: "600x400", class:"card-img" %>
-        <div class="card-img-overlay">
-          <p class="card-text text-center text-white pt-5">
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります<br>
-            会員ではない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要にます。<br>
-          </p>
+      <div class="mt-5">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <%= image_tag "cheese_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "chocolate_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "shor_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "montblanc.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "cooky.jpg", size: "600x400", class:"card-img" %>
+            </div>
+          </div>
+          <div>
+            <p class="text-light shadow">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります<br>
+              会員ではない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要にます。<br>
+            </p>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
 
@@ -30,3 +51,7 @@
     </div>
   </div>
 </div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<%= javascript_pack_tag "swiper/swiper.js" %>
