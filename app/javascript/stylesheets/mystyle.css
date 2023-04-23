@@ -25,6 +25,7 @@ p.shadow {
 body {
  font-family: 'Noto Serif JP', sans-serif;
   height:100%;
+  margin-bottom: 200px
 }
 
 .card-img-top {
