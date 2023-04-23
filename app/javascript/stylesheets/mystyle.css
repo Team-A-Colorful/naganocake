@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+ 
 #thanks{
   display: none;
+}
+
+body {
+ font-family: 'Noto Serif JP', sans-serif;
 }
