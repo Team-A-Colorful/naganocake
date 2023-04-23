@@ -1,0 +1,40 @@
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+
+  <div class="py-4">
+   <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの注文履歴" %></h4>
+  </div>
+
+  <table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>購入日時</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr class="order_index_tbody_tr" data-href="/admin/orders/<%= order.id%>">
+      <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
+      <td><%= order.order_items.sum(:count) %></td>
+      <td><%=order.order_status_i18n %></td>
+    </tr>
+   <%end%>
+   <%= paginate @orders, theme: 'bootstrap-5' %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".order_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+
+</script>
