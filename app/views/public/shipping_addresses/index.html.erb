@@ -6,7 +6,7 @@
 <%= render 'layouts/error_messages', model: @shipping_address %>
 <%end%>
 
-<div class='pt-4'>
+<div class='row pt-4'>
     <h4 class="bg-light">配送先登録/一覧</h4>
 </div>
 
@@ -31,7 +31,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><%=f.submit "新規登録", class: "btn btn-success px-5"%></td>
+      <td><%=f.submit "新規登録", class: "btn btn-outline-success px-5"%></td>
     </tr>
 
   </tbody>
@@ -59,8 +59,8 @@
       <td><%= shipping_address.post_code %></td>
       <td><%= shipping_address.address %></td>
       <td><%= shipping_address.address_label %></td>
-      <td class="text-center"><%=link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-success d-inline-block" %>
-          <%=link_to "削除する", shipping_address_path(shipping_address), method: :delete, class: "btn btn-danger d-inline-block" %></td>
+      <td class="text-center"><%=link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-outline-success d-inline-block" %>
+          <%=link_to "削除する", shipping_address_path(shipping_address), method: :delete, class: "btn btn-outline-danger d-inline-block" %></td>
     </tr>
    <%end%>
   </tbody>

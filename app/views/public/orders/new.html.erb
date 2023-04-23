@@ -47,7 +47,7 @@
                 <%= f.label :address_number_2, "登録済み住所から選択" %>
               </th>
               <td>
-                <%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+                <%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display),class: "form-control"%>
               </td>
             </tr>
           </table>
@@ -58,21 +58,21 @@
                 <%= f.label :address_number_3, "新しいお届け先" %><br>
               </th>
               <td>郵便番号（ハイフンなし）</td>
-              <td><%= f.text_field :post_code %></td>
+              <td><%= f.text_field :post_code ,class: "form-control col-lg-4" %></td>
             </tr>
             <tr>
               <th></th>
               <td>住所</td>
-              <td><%= f.text_field :address, size: 30*2 %></td>
+              <td><%= f.text_field :address, size: 30*2,class: "form-control" %></td>
             </tr>
             <tr>
               <th></th>
               <td>宛名</td>
-              <td><%= f.text_field :address_label %></td>
+              <td><%= f.text_field :address_label,class: "form-control col-lg-4" %></td>
             </tr>
           </table>
           <div class="d-grid gap-2 col-6 mx-auto mt-3">
-            <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+            <%= f.submit '確認画面へ進む', class: "btn btn-outline-primary" %>
           </div>
         <% end %>
       </div>
