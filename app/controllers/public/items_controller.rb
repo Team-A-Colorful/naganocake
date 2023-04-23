@@ -10,5 +10,11 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @cart_item = CartItem.new
   end
+  
+  def genre_search
+    @genre = Genre.find(params[:id])
+    @items = @genre.items.all.page(params[:page]).per(8)
+    @genres = Genre.all
+  end
 
 end
