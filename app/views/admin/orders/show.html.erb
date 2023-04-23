@@ -33,8 +33,8 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-            <%= f.select :order_status, Order.order_statuses_i18n.invert %>
-            <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+            <%= f.select :order_status, Order.order_statuses_i18n.invert,{class: "form-control"} %>
+            <%= f.submit "更新", class: "btn btn-sm btn-outline-success" %>
           </td>
         </tr>
       </table>
@@ -64,8 +64,8 @@
               <td><%= order_item.count %></td>
               <td><%= @subtotal %>円</td>
               <td>
-                <%= f.select :work_status, OrderItem.work_statuses_i18n.invert %>
-                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+                <%= f.select :work_status,OrderItem.work_statuses_i18n.invert,{class: "form-control"} %>
+                <%= f.submit "更新", class: "btn btn-sm btn-outline-success" %>
               </td>
             </tr>
           <% end %>

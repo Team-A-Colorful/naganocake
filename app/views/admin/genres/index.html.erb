@@ -14,7 +14,7 @@
           <div class="form-inline">
             <%= f.label "ジャンル名", class: 'mr-3' %>
             <%= f.text_field :name, :placeholder => "ジャンル名", class: 'form-control mr-3' %>
-            <%= f.submit "新規登録", class: 'btn btn-success' %>
+            <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
           </div>
         </div>
       <% end %>
@@ -32,7 +32,7 @@
                 <%= genre.name %>
               </td>
               <td class="text-center">
-                <%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-success'%>
+                <%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-outline-success'%>
               </td>
             </tr>
           <% end %>
