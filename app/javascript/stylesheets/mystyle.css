@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
- 
+
 #thanks{
   display: none;
 }
@@ -32,4 +32,18 @@ body {
     height: 60%;
     flex-shrink:0;
  }
- 
+
+.underline-animate::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 2px;
+  background-color: red;
+  transition: width 0.6s ease;
+}
+
+.underline-animate:hover::before {
+  width: 100%;
+}
