@@ -24,5 +24,11 @@ p.shadow {
 
 body {
  font-family: 'Noto Serif JP', sans-serif;
-  
+  height:100%;
 }
+
+.card-img-top {
+    height: 60%;
+    flex-shrink:0;
+ }
+ 
