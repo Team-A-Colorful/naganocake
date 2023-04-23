@@ -15,6 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 scope module: :public do
   root 'homes#top'
   get 'about' => 'homes#about'
+  get "items/genre_search" => "items#genre_search", as: "genre_search"
   get 'search' => 'searches#search'
   resources :items, only: [:index, :show]
   resource :customers, only: [] do
