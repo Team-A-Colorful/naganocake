@@ -1,15 +1,45 @@
+<style>
+  h1 span {
+    position: relative;
+    display: inline-block;
+  }
+  h1 span::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    transition: width 0.6s ease;
+  }
+</style>
+
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="pt-3 pb-3 text-center">About</h1>
-      <p class=" pb-3 text-center">
+      <h1 class="pt-3 pb-3 text-center">
+        <span>About</span>
+      </h1>
+      <div class="cake-image-container">
+        <%= image_tag "cake.jpg", size: "400x200", class:"d-block mx-auto" %>
+      </div>
+      <p id="fade-in" class="pt-3 text-center" style="display:none">
         ながのCAKEは全国配送可能なケーキ屋さんです。<br>
         お子様からお年寄りの方までおめしあがりいただけるよう、<br>
         様々なバリエーションをご用意しております。<br>
         また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
         ぜひご注文ください。
       </p>
-        <%= image_tag "cake.jpg", size: "400x200", class:"d-block mx-auto" %>
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('h1 span').addClass('underline-animate');
+    $('#fade-in').delay(1000).fadeIn(2000, function() {
+      $('h1 span::before').css('width', '100%');
+    });
+  });
+</script>
