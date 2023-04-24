@@ -8,42 +8,48 @@
   <div class="col pt-3">
     <h4>注文履歴詳細画面</h4>
   </div>
-  <div class="col">
-    <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-      <table class="table">
-        <tr>
-          <th>購入者</th>
-          <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
-        </tr>
-        <tr>
-          <th>注文日</th>
-          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <th>配送先</th>
-          <td>〒<%= @order.delivery_post_code %>
-            <%= @order.delivery_address %><br>
-            <%= @order.delivery_address_label %>
-          </td>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <td><%= @order.pay_option_i18n if @order.pay_option.present? %></td>
-        </tr>
-        <tr>
-          <th>注文ステータス</th>
-          <td>
-            <%= f.select :order_status, Order.order_statuses_i18n.invert,{class: "form-control"} %>
-            <%= f.submit "更新", class: "btn btn-sm btn-outline-success" %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th class="table-active">購入者</th>
+            <td class="tr-color">
+              <%= link_to admin_customer_path(@order.customer.id) do %>
+                <%= @order.customer.first_name %><%= @order.customer.last_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th class="table-active">注文日</th>
+            <td class="tr-color"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th class="table-active">配送先</th>
+            <td class="tr-color">〒<%= @order.delivery_post_code %>
+              <%= @order.delivery_address %><br>
+              <%= @order.delivery_address_label %>
+            </td>
+          </tr>
+          <tr>
+            <th class="table-active">支払方法</th>
+            <td class="tr-color"><%= @order.pay_option_i18n if @order.pay_option.present? %></td>
+          </tr>
+          <tr>
+            <th class="table-active">注文ステータス</th>
+            <td class="tr-color">
+              <%= f.select :order_status, Order.order_statuses_i18n.invert,{class: "form-control"} %>
+              <%= f.submit "更新", class: "btn btn-sm btn-outline-success" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-8 mt-3">
       <table class="table">
-        <thead class="thead-light">
+        <thead class="table-active">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -52,7 +58,7 @@
             <th>製作ステータス</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="tr-color">
           <% @total = 0 %>
           <% @order_items.each do |order_item| %>
           <% @subtotal = order_item.item.add_tax_sales_price * order_item.count %>
@@ -76,16 +82,16 @@
     <div class="col-3 offset-1 mt-3">
       <table class="table">
         <tr>
-          <th>商品合計</th>
-          <td><%= @total %>円</td>
+          <th class="table-active">商品合計</th>
+          <td class="tr-color"><%= @total %>円</td>
         </tr>
         <tr>
-          <th>送料</th>
-          <td><%= @order.shipping_fee %>円</td>
+          <th class="table-active">送料</th>
+          <td class="tr-color"><%= @order.shipping_fee %>円</td>
         </tr>
         <tr>
-          <th>請求金額合計</th>
-          <td><%= @total + @order.shipping_fee %>円</td>
+          <th class="table-active">請求金額合計</th>
+          <td class="tr-color"><%= @total + @order.shipping_fee %>円</td>
         </tr>
       </table>
     </div>
