@@ -40,7 +40,7 @@
         <% @items.each do |item| %>
              <div class="col-3">
               <%= link_to item_path(item) do %>
-                <div class="card text-dark bg-light h-100">
+                <div class="card text-dark tr-color h-100">
                   <%= attachment_image_tag item, :image,format: 'jpeg', class: "card-img-top"%>
                   <div class="card-body">
                     <h6 class="card-title text-truncate"><%= item.name %></h6>
