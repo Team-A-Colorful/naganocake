@@ -3,7 +3,7 @@
 <div class="col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
   
 <div class='row pt-4'>
-  <h4 class="bg-light">マイページ</h4>
+  <h4>マイページ</h4>
 </div>
 
 <div class="ml-4 buttons_and_table">
@@ -11,28 +11,28 @@
   <table class="table table-bordered">
   <tbody>
     <tr>
-      <td class="table-light" style="width: 25%">氏名</td>
-      <td colspan="2"><%= "#{@customer.first_name}"+"#{@customer.last_name}" %></td>
+      <td class="table-active" style="width: 25%">氏名</td>
+      <td class="tr-color" ><%= "#{@customer.first_name}"+"#{@customer.last_name}" %></td>
     </tr>
     <tr>
-      <td class="table-light">カナ</td>
-      <td colspan="2"><%= "#{@customer.first_name_kana}"+"#{@customer.last_name_kana}" %></td>
+      <td class="table-active">カナ</td>
+      <td class="tr-color"><%= "#{@customer.first_name_kana}"+"#{@customer.last_name_kana}" %></td>
     </tr>
     <tr>
-      <td class="table-light">郵便番号</td>
-      <td colspan="2"><%= @customer.post_code %></td>
+      <td class="table-active">郵便番号</td>
+      <td class="tr-color"><%= @customer.post_code %></td>
     </tr>
     <tr>
-      <td class="table-light">住所</td>
-      <td colspan="2"><%= @customer.address %></td>
+      <td class="table-active">住所</td>
+      <td class="tr-color"><%= @customer.address %></td>
     </tr>
     <tr>
-      <td class="table-light">電話番号</td>
-      <td colspan="2"><%= @customer.telephone_number %></td>
+      <td class="table-active">電話番号</td>
+      <td class="tr-color"><%= @customer.telephone_number %></td>
     </tr>
     <tr>
-      <td class="table-light">メールアドレス</td>
-      <td><%= @customer.email %></td>
+      <td class="table-active">メールアドレス</td>
+      <td class="tr-color"><%= @customer.email %></td>
     </tr>
   </tbody>
   </table>
