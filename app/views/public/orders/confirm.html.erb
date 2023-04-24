@@ -26,10 +26,10 @@
                   <%= attachment_image_tag cart_item.item, :image,format: 'jpeg', size: "100x50" %>
                   <%= cart_item.item.name %>
                 </td>
-                <td><%= cart_item.item.add_tax_sales_price %></td>
+                <td><%= cart_item.item.add_tax_sales_price.to_s(:delimited) %></td>
                 <td><%= cart_item.count %></td>
                 <% subtotal = (cart_item.item.add_tax_sales_price*cart_item.count) %>
-                <td><%= subtotal %></td>
+                <td><%= subtotal.to_s(:delimited) %></td>
               </tr>
               <% total += (cart_item.item.add_tax_sales_price*cart_item.count) %>
             <% end %>
@@ -45,12 +45,12 @@
           </tr>
           <tr>
             <th class="table-active">商品合計</th>
-            <td class="tr-color"><%= total.to_i %></td>
+            <td class="tr-color"><%= total.to_s(:delimited) %></td>
             </tr>
           <tr>
             <th class="table-active">請求金額</th>
             <% @order.total_price = @order.shipping_fee + total.to_i %>
-            <td class="tr-color"><%= @order.total_price %></td>
+            <td class="tr-color"><%= @order.total_price.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

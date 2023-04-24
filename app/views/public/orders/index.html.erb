@@ -30,7 +30,7 @@
             <%= order_item.item.name %>  <!--order_itemに紐づくitemのnameをeachで順に表示-->
           <%end%>
       </td>
-      <td><%= order.total_price %>円</td>
+      <td><%= order.total_price.to_s(:delimited) %>円</td>
       <td><%= order.order_status_i18n %></td>
     </tr>
    <%end%>
