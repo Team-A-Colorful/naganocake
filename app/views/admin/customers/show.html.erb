@@ -3,55 +3,57 @@
 <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
   
   <div class='row py-4'>
-   <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員詳細" %></h4>
+   <h4><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員詳細" %></h4>
   </div>
-  <table class="table table-borderless ml-5">
+  <table class="table table-bordered ml-5">
   <tbody>
     <tr>
-      <td>会員ID</td>
-      <td><%= @customer.id %></td>
+      <th class="table-active w-25">会員ID</td>
+      <td class="tr-color"><%= @customer.id %></td>
     </tr>
     <tr>
-      <td>氏名</td>
-      <td><%= "#{@customer.first_name}"+"#{@customer.last_name}" %></td>
+      <th class="table-active">氏名</td>
+      <td class="tr-color"><%= "#{@customer.first_name}"+"#{@customer.last_name}" %></td>
     </tr>
     <tr>
-      <td>フリガナ</td>
-      <td><%= "#{@customer.first_name_kana}"+"#{@customer.last_name_kana}" %></td>
+      <th class="table-active">フリガナ</td>
+      <td class="tr-color"><%= "#{@customer.first_name_kana}"+"#{@customer.last_name_kana}" %></td>
     </tr>
     <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.post_code %></td>
+      <th class="table-active">郵便番号</td>
+      <td class="tr-color"><%= @customer.post_code %></td>
     </tr>
     <tr>
-      <td>住所</td>
-      <td><%= @customer.address %></td>
+      <th class="table-active">住所</td>
+      <td class="tr-color"><%= @customer.address %></td>
     </tr>
     <tr>
-      <td>電話番号</td>
-      <td><%= @customer.telephone_number %></td>
+      <th class="table-active">電話番号</td>
+      <td class="tr-color"><%= @customer.telephone_number %></td>
     </tr>
     <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
+      <th class="table-active">メールアドレス</td>
+      <td class="tr-color"><%= @customer.email %></td>
     </tr>
     <tr>
-      <td>会員ステータス</td>
-      <td><% if @customer.membership_status == true %>
-            <P>有効</P>
+      <th class="table-active">会員ステータス</td>
+      <td class="tr-color"><% if @customer.membership_status == true %>
+            有効
           <% else %>
-            <P>退会</P>
+            退会
           <%end%>
       </td>
     </tr>
+   </tbody>
+   </table> 
+   
+  <table class="table table-borderless text-center">
     <tr>
       <td></td>
       <td><%= link_to "編集する", edit_admin_customer_path(@customer),class: "btn btn-outline-success"%>&emsp;
       　　<%= link_to "注文履歴一覧を見る",  admin_customer_order_history_path(@customer),class: "btn btn-outline-primary"%>
       </td>
     </tr>
-
-  </tbody>
   </table>
 
 
