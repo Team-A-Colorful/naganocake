@@ -11,6 +11,11 @@
   z-index: 1;
 }
 
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
 .shadow {
   box-shadow: none !important;
 }
@@ -50,4 +55,8 @@ body {
 
 #info-list {
   color: #998977;
+}
+
+.tr-color {
+  background-color: rgba(255, 254, 242, 0.5);
 }
