@@ -3,35 +3,37 @@
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto d-flex justify-content-between m-5">
       <h5 class="d-flex align-items-center pr-3 pl-3">商品詳細</h5>
     </div>
-    <div class="col-5">
-      <%= attachment_image_tag @item, :image,format: 'jpeg', size: "300x200", class: 'd-block mx-auto' %>
+    <div class="d-flex tr-color p-3">
+      <div class="col-5">
+        <%= attachment_image_tag @item, :image,format: 'jpeg', size: "300x200", class: 'd-block mx-auto' %>
+      </div>
+      <div class="col-7">
+        <dl class="row">
+          <dt class="col-3">商品名</dt>
+          <dd class="col-9">
+            <%= @item.name %>
+          </dd>
+          <dt class="col-3">商品説明</dt>
+          <dd class="col-9">
+            <%= @item.introduction %>
+          </dd>
+          <dt class="col-3">ジャンル</dt>
+          <dd class="col-9">
+            <%= @item.genre.name %>
+          </dd>
+          <dt class="col-3">税込価格<br>(税抜価格)</dt>
+          <dd class="col-9">
+            <%= @item.add_tax_sales_price.to_s(:delimited) %>
+            ( <%=@item.price.to_s(:delimited) %> ) 円
+          </dd>
+          <dt class="col-3">販売ステータス</dt>
+          <dd class="col-9">
+            <%= @item.sale_status ? '販売中' : '販売停止中' %>
+          </dd>
+        </dl>
+      </div>
     </div>
-    <div class="col-7">
-      <dl class="row">
-        <dt class="col-3">商品名</dt>
-        <dd class="col-9">
-          <%= @item.name %>
-        </dd>
-        <dt class="col-3">商品説明</dt>
-        <dd class="col-9">
-          <%= @item.introduction %>
-        </dd>
-        <dt class="col-3">ジャンル</dt>
-        <dd class="col-9">
-          <%= @item.genre.name %>
-        </dd>
-        <dt class="col-3">税込価格<br>(税抜価格)</dt>
-        <dd class="col-9">
-          <%= @item.add_tax_sales_price.to_s(:delimited) %>
-          ( <%=@item.price.to_s(:delimited) %> ) 円
-        </dd>
-        <dt class="col-3">販売ステータス</dt>
-        <dd class="col-9">
-          <%= @item.sale_status ? '販売中' : '販売停止中' %>
-        </dd>
-      </dl>
     </div>
-  </div>
   <div class="text-center p-3">
     <%= link_to "編集する", edit_admin_item_path(@item), class: 'btn btn-outline-success' %>
   </div>
