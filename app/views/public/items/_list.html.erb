@@ -1,10 +1,13 @@
 <div class="col-2">
-  <div class="card mt-5">
-    <h6 class="card-header d-flex align-items-center justify-content-center">ジャンル検索</h6>
-    <div class="card-body">
-      <% genres.each do |genre| %>
-        <p class="card-text"><%= link_to "#{genre.name}", genre_search_path(id: genre.id) %></p><br>
-      <% end %>
-    </div>
-  </div>
+  <table class="table table-bordered table-hover mt-5">
+    <tr class="table-active text-center justify-content-center">
+      <th>ジャンル検索</th>
+    </tr>
+    <% genres.each do |genre| %>
+    <tr class="tr-color ">
+      <td class="text-center"><%= link_to "#{genre.name}", genre_search_path(id: genre.id),class: "text-dark"%></td>
+    </tr>
+    <%end%>
+  </table>
 </div>
+ 
