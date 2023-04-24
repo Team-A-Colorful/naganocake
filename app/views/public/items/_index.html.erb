@@ -1,9 +1,9 @@
 <div class="d-flex flex-wrap">
   <% items.each do |item| %>
-  
+
   <div class="col-3">
     <%= link_to item_path(item) do %>
-      <div class="card text-dark bg-light h-100">
+      <div class="card mb-4 text-dark bg-light">
         <%= attachment_image_tag item, :image,format: 'jpeg', class: "card-img-top"%>
         <div class="card-body">
           <p class="card-title text-truncate"><%= item.name %></p>
@@ -12,7 +12,7 @@
       </div>
     <% end %>
   </div>
- 
+
   <% end %>
   <%= paginate items, theme: 'bootstrap-5' %>
 </div>

@@ -55,19 +55,19 @@
         </table>
       </div>
     </div>
-    <table>
+    <table class-"table table-borderless">
       <tr>
-        <th>支払方法</th>
+        <th>支払方法&emsp;：&emsp;</th>
         <td><%= @order.pay_option_i18n %></td>
       </tr>
       <tr>
-        <th>お届け先</th>
+        <th>お届け先&emsp;：&emsp;</th>
         <td>〒<%= @order.delivery_post_code %></td>
         <td><%= @order.delivery_address %></td>
         <td><%= @order.delivery_address_label %></td>
       </tr>
     </table>
-    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: orders_path, method: :post, local: true, class: "text-center mt-5" do |f| %>
      <%= f.hidden_field :customer_id, value: current_customer.id %>
      <%= f.hidden_field :shipping_fee %>
      <%= f.hidden_field :total_price %>
