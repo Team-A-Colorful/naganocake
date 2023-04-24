@@ -1,18 +1,19 @@
 <div class='container'>
 <div class='row pt-5'>
-<div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+<div class="col-sm-12 col-md-11 col-lg-10 px-5 px-sm-0 mx-auto">
   
 <% if @customer.errors.any? %>
 <%= render 'layouts/error_messages', model: @customer %>
 <%end%>
   
-  <div class=' row py-4'>
-      <h4 class="bg-light"><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員情報編集" %></h4>
+  <div class='row py-4'>
+      <h4><%= "#{@customer.first_name}"+"#{@customer.last_name}さんの会員情報編集" %></h4>
   </div>
   
+  <div class="tr-color p-2">
      <%= form_with model: @customer,method: :patch, url: admin_customer_path(@customer) do |f|%>
      <div class="form-group">
-      <table class="table table-borderless ml-5">
+      <table class="table table-borderless">
       <tbody>
         <tr>
           <td>会員ID</td>
@@ -61,6 +62,7 @@
       </table>
     </div>
     <%end%>
+  </div>
 
 
 </div>

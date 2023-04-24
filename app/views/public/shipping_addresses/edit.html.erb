@@ -1,13 +1,13 @@
 <div class='container'>
 <div class='row pt-5'>
-<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto tr-color">
   
 <% if @shipping_address.errors.any? %>
 <%= render 'layouts/error_messages', model: @shipping_address %>
 <%end%>
 
-<div class='row p-4'>
-    <h4 class="bg-light">配送先編集</h4>
+<div class='p-4'>
+    <h4>配送先編集</h4>
 </div>
 
 <div class="px-3">
@@ -29,7 +29,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><%=f.submit "変更内容を保存", class: "btn btn-success px-5"%></td>
+      <td><%=f.submit "変更内容を保存", class: "btn btn-outline-success px-5"%></td>
     </tr>
 
   </tbody>

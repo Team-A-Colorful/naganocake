@@ -6,13 +6,12 @@
 <%= render 'layouts/error_messages', model: @shipping_address %>
 <%end%>
 
-<div class='row pt-4'>
-    <h4 class="bg-light">配送先登録/一覧</h4>
-</div>
-
 　<!--以下は登録フォーム-->
 
-<div class="px-3">
+<div class="p-3 tr-color">
+  <div class='pt-2'>
+    <h4>配送先登録/一覧</h4>
+ </div>
  <%= form_with model: @shipping_address do |f|%>
  <div class="form-group">
   <table class="table table-borderless">
@@ -42,10 +41,10 @@
 
 <!--以下は一覧表-->
 <% unless @shipping_addresses.blank? %>
-<div class="px-3 pt-5 float-left">
+<div class=" pt-5 float-left">
 
-  <table class="table table-bordered pl-5 ml-2">
-  <thead class="thead-light">
+  <table class="table table-bordered">
+  <thead class="table-active">
     <tr>
       <th>郵便番号</th>
       <th>住所</th>
@@ -55,7 +54,7 @@
   </thead>
   <tbody>
     <% @shipping_addresses.each do |shipping_address| %>
-    <tr>
+    <tr class="tr-color">
       <td><%= shipping_address.post_code %></td>
       <td><%= shipping_address.address %></td>
       <td><%= shipping_address.address_label %></td>
