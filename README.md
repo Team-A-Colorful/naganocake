@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# NaganoCake-EC
 
-Things you may want to cover:
+##About
+* This is an e-commerce site application for a cake shop called Nagano Cakes.
 
-* Ruby version
+## GitHub-URL
+* https://github.com/Team-A-Colorful/naganocake
 
-* System dependencies
+## Environments
+* Ruby 3.1.2p20
+* Rails 6.1.7.3
+* Yarn 1.22.19
+* SQLite
+* bootstrap5
 
-* Configuration
+## Gems
+* refile
+* devise
+* kaminari
+* enum_help
+* rails-i18n(for Japanese translation)
+* rubocop
 
-* Database creation
+## Development Team Account
+* https://github.com/Team-A-Colorful
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Developer Accounts
+* https://github.com/orgs/Team-A-Colorful/people/daze573
+* https://github.com/orgs/Team-A-Colorful/people/takahasi103
+* https://github.com/orgs/Team-A-Colorful/people/taku-zfof
