@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto d-flex justify-content-between m-5">
-      <h5 class="bg-light d-flex align-items-center pr-3 pl-3">ジャンル一覧・追加</h5>
+      <h5 class="d-flex align-items-center pr-3 pl-3">ジャンル一覧・追加</h5>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto" >
 
@@ -19,7 +19,7 @@
         </div>
       <% end %>
       <table class="table">
-        <thead class="thead-light">
+        <thead class="table-active">
           <tr>
             <th class="text-center">ジャンル</th>
             <th></th>
@@ -27,8 +27,8 @@
         </thead>
         <tbody>
           <% @genres.each do |genre| %>
-            <tr>
-              <td>
+            <tr class="tr-color">
+              <td class="text-center">
                 <%= genre.name %>
               </td>
               <td class="text-center">
