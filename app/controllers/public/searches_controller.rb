@@ -5,5 +5,6 @@ class Public::SearchesController < ApplicationController
     else
       @items = Item.none.page(params[:page])
     end
+    @genres = Genre.all
   end
 end
