@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto d-flex justify-content-between m-5">
-      <h5 class="bg-light d-flex align-items-center pr-3 pl-3">ショッピングカート</h5>
+      <h5 class="d-flex align-items-center pr-3 pl-3">ショッピングカート</h5>
 
       <div>
         <%= link_to "カートを空にする", cart_item_destroy_all_path(@cart_items), method: :delete, class: 'btn btn-outline-danger' %>
@@ -15,7 +15,7 @@
           </div>
       <!--ここまでエラーメッセージ-->
       <table class="table table-bordered">
-        <thead class="thead-light">
+        <thead class="table-active">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-            <tr class="bg-white">
+            <tr class="tr-color">
               <td class="align-middle">
                 <%= attachment_image_tag cart_item.item, :image,format: 'jpeg', size: "100x50" %>
                 <%= cart_item.item.name %>
