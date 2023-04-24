@@ -47,3 +47,7 @@ body {
 .underline-animate:hover::before {
   width: 100%;
 }
+
+#info-list {
+  color: #998977;
+}
