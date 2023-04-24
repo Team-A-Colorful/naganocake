@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <%= render 'list', genres: @genres %>
-    <div class="col-md-4 offset-md-1 d-flex align-items-center pt-5">
+    <div class="col-md-4 offset-md-1 d-flex align-items-center mt-5 tr-color">
       <%= attachment_image_tag @item, :image,format: 'jpeg', size: "300x200", class: 'd-block mx-auto' %>
     </div>
-    <div class="col-md-4 d-flex align-items-center pt-5">
+    <div class="col-md-4 d-flex align-items-center mt-5 tr-color">
       <div>
         <h2 class="text-nowrap">
           <%= @item.name %>
