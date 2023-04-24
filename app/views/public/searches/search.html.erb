@@ -12,8 +12,8 @@
           <% @items.each do |item| %>
             <div class="col-3">
               <%= link_to item_path(item) do %>
-                <div class="card mb-4 text-dark tr-color">
-                  <%= attachment_image_tag item, :image,format: 'jpeg', class: "card-img-top" %>
+                <div class="card mb-4 text-dark tr-color h-100">
+                  <%= attachment_image_tag item, :image,:fill, 175, 150, format: 'jpeg', class: "card-img-top" %>
                   <div class="card-body">
                     <p class="card-title text-truncate"><%= item.name %></p>
                     <p class="card-text text-truncate">¥<%= item.add_tax_sales_price.to_s(:delimited) %></p>
