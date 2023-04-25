@@ -2,7 +2,7 @@
 
 # NaganoCake-EC
 
-##About
+## About
 * This is an e-commerce site application for a cake shop called Nagano Cakes.
 
 ## GitHub-URL
