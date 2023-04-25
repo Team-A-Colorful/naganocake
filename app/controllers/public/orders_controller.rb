@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
         @order_item.item_id = cart_item.item_id
         @order_item.count = cart_item.count
         @order_item.order_price = (cart_item.item.price*1.1).floor
-        @order_item.work_status = 1
+        @order_item.work_status = 0
         @order_item.save
       end
       current_customer.cart_items.destroy_all
