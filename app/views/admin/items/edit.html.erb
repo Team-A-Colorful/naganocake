@@ -1,2 +1,46 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto d-flex justify-content-between m-5">
+      <h5 class="d-flex align-items-center pr-3 pl-3">商品編集</h5>
+    </div>
+    <div class="mx-auto tr-color p-3">
+      
+      <% if @item.errors.any? %>
+        <%= render 'layouts/error_messages', model: @item %>
+      <%end%>
+      
+      <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
+        <div class="form-group form-inline">
+          <%= f.label "商品画像", class: 'w-25 justify-content-start' %>
+          <%= f.file_field :image, class: 'w-75' %>
+        </div>
+        <div class="form-group form-inline">
+          <%= f.label "商品名", class: 'w-25 justify-content-start' %>
+          <%= f.text_field :name, class: 'form-control w-75' %>
+        </div>
+        <div class="form-group form-inline d-flex align-items-start">
+          <%= f.label "商品説明", class: 'w-25 justify-content-start' %>
+          <%= f.text_area :introduction, class: 'form-control w-75', size: "30x5" %>
+        </div>
+        <div class="form-group  form-inline">
+          <%= f.label "ジャンル", class: 'w-25 justify-content-start' %>
+          <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "--選択してください--"}, class: 'form-control w-75' %>
+        </div>
+        <div class="form-group form-inline">
+          <%= f.label "税抜価格", class: 'w-25 justify-content-start' %>
+          <%= f.text_field :price, class: 'form-control w-25', size: 36 %>円
+        </div>
+        <div class="form-group form-inline">
+          <%= f.label "販売ステータス", class: 'w-25 justify-content-start' %>
+          <%= f.radio_button :sale_status, :true %>
+          <%= f.label :sale_status, "販売中", class: 'pr-3' %>
+          <%= f.radio_button :sale_status, :false %>
+          <%= f.label :sale_status, "販売停止中" %>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <%= f.submit "変更を保存", class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

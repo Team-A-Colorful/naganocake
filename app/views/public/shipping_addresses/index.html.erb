@@ -1,2 +1,73 @@
-<h1>Public::ShippingAddresses#index</h1>
-<p>Find me in app/views/public/shipping_addresses/index.html.erb</p>
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+
+<% if @shipping_address.errors.any? %>
+<%= render 'layouts/error_messages', model: @shipping_address %>
+<%end%>
+
+　<!--以下は登録フォーム-->
+
+<div class="p-3 tr-color">
+  <div class='pt-2'>
+    <h4>配送先登録/一覧</h4>
+ </div>
+ <%= form_with model: @shipping_address do |f|%>
+ <div class="form-group">
+  <table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td>郵便番号（ハイフンなし）</td>
+      <td><%= f.text_field :post_code ,placeholder: "0000000",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td colspan="4"><%= f.text_field :address ,placeholder: "東京都渋谷区代々木神園町0-0",class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :address_label ,placeholder: "令和道子",class: 'form-control' %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%=f.submit "新規登録", class: "btn btn-outline-success px-5"%></td>
+    </tr>
+
+  </tbody>
+  </table>
+</div>
+<%end%>
+</div>
+
+<!--以下は一覧表-->
+<% unless @shipping_addresses.blank? %>
+<div class=" pt-5 float-left">
+
+  <table class="table table-bordered">
+  <thead class="table-active">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipping_addresses.each do |shipping_address| %>
+    <tr class="tr-color">
+      <td><%= shipping_address.post_code %></td>
+      <td><%= shipping_address.address %></td>
+      <td><%= shipping_address.address_label %></td>
+      <td class="text-center"><%=link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-outline-success d-inline-block" %>
+          <%=link_to "削除する", shipping_address_path(shipping_address), method: :delete, class: "btn btn-outline-danger d-inline-block" %></td>
+    </tr>
+   <%end%>
+  </tbody>
+</table>
+
+</div>
+<%end%>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
+#thanks{
+  display: none;
+}
+
+.swiper p {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  z-index: 1;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+.shadow {
+  box-shadow: none !important;
+}
+
+p.shadow {
+  font-weight: bold;
+  text-shadow: -1px -1px 0 black, -1px 0 0 black, -1px 1px 0 black,
+                  0 -1px 0 black,                  0 1px 0 black,
+                1px -1px 0 black,  1px 0 0 black,  1px 1px 0 black;
+}
+
+body {
+ font-family: 'Noto Serif JP', sans-serif;
+  height:100%;
+  margin-bottom: 200px
+}
+
+.card-img-top {
+    height: 60%;
+    flex-shrink:0;
+ }
+
+.underline-animate::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 2px;
+  background-color: red;
+  transition: width 0.6s ease;
+}
+
+.underline-animate:hover::before {
+  width: 100%;
+}
+
+#info-list {
+  color: #684E34;
+}
+
+.tr-color {
+  background-color: rgba(255, 254, 242, 0.5);
+}
+
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;
+  background-color: rgba(255, 254, 242, 0.8);
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: rgba(255, 165, 0, 0.5);
+    /* border-color: #007bff; */
+}

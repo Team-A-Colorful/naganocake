@@ -1,2 +1,61 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= render 'public/items/list', genres: @genres %>
+    <div class="col-md-9 offset-md-1">
+      <div class="mt-5">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <%= image_tag "cheese_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "chocolate_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "shor_cake.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "shop.jpg", size: "600x400", class:"card-img" %>
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag "show-case.jpg", size: "600x400", class:"card-img" %>
+            </div>
+          </div>
+          <div>
+            <p class="text-light shadow">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります<br>
+              会員ではない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要にます。<br>
+            </p>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+      <h2 class="pt-3">新着商品</h2>
+      <div class="row">
+        <% @items.each do |item| %>
+             <div class="col-3">
+              <%= link_to item_path(item) do %>
+                <div class="card text-dark tr-color h-100">
+                  <%= attachment_image_tag item, :image,:fill, 175, 150, format: 'jpeg', class: "card-img-top"%>
+                  <div class="card-body">
+                    <h6 class="card-title text-truncate"><%= item.name %></h6>
+                    <p class="card-text text-truncate"> ¥<%= item.add_tax_sales_price.to_s(:delimited) %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+      <%= link_to "全ての商品を見る＞", items_path, class: "nav-link text-right" %>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<%= javascript_pack_tag "swiper/swiper.js" %>

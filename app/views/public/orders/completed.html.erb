@@ -1,2 +1,18 @@
-<h1>Public::Orders#completed</h1>
-<p>Find me in app/views/public/orders/completed.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="clo-12">
+      <div class="d-flex align-items-center justify-content-center m-5">
+        <%= image_tag 'thanks.png', width: '10%', hight: '10%' %>
+        <h1 id="thanks">ご注文ありがとうございます。</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $("#thanks").hide();
+  });
+  $(function(){
+    $("#thanks").show(2000);
+  });
+</script>

@@ -1,2 +1,46 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class='container'>
+<div class='row pt-5'>
+<div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+  
+  <div class='row py-4'>
+    <h4>会員一覧</h4>
+  </div>
+
+  <table class="table table-hover">
+  <thead class="table-active">
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+    <tr class="customer_index_tbody_tr tr-color" data-href="/admin/customers/<%= customer.id%>">
+      <td><%= customer.id %></td>
+      <td><%= customer.first_name + customer.last_name %></td>
+      <td><%= customer.email %></td>
+      <td><% if customer.membership_status == true %>
+            <P class="text-success">有効</P>
+           <% else %>
+            <P class="text-danger">退会</P>
+           <%end%>
+           </td>
+    </tr>
+   <%end%>
+   <%= paginate @customers, theme: 'bootstrap-5' %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".customer_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>

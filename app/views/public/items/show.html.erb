@@ -1,2 +1,43 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= render 'list', genres: @genres %>
+    <div class="col-md-4 offset-md-1 d-flex align-items-center mt-5 p-3 tr-color">
+      <%= attachment_image_tag @item, :image,format: 'jpeg', size: "300x200", class: 'd-block mx-auto' %>
+    </div>
+    <div class="col-md-4 d-flex align-items-center mt-5 p-4 tr-color">
+      <div>
+        <h2 class="text-truncate">
+          <%= @item.name %>
+        </h2>
+        <p>
+          <%= @item.introduction %>
+        </p>
+        <h3>
+          ¥ <%= @item.add_tax_sales_price.to_s(:delimited) %> (税込)
+        </h3>
+        <!--エラーメッセージ-->
+            <% if flash[:error].present? %>
+          　　<ul class="errors">
+            　　<% flash[:error].each do |e| %>
+             　　　　 <li><%= e %></li>
+            　　<% end %>
+         　　   </ul>
+      　　    <% end %>
+    　   <!--ここまでエラーメッセージ-->
+        <br>
+        <%= form_with model: @cart_item, class: "form-inline", url: cart_items_path, method: :post do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+            <%if customer_signed_in?%>
+              <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%end%>
+            <% if @item.sale_status.present? %>
+              <%= f.select :count, *[1..100], {include_blank: '個数選択', selected: '個数選択'}, class: "form-control mr-3"%>
+              <%= f.submit "カートに入れる", class: 'btn btn-outline-success' %>
+            <% else %>
+              <h5 class="text-danger"> 購入できません </h5>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
