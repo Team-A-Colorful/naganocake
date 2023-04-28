@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genres, only: [:index, :new, :edit, :create,:update]
+  before_action :set_genres, only: [:index, :new, :edit, :create, :update]
   def index
     @items = Item.all.page(params[:page]).per(10)
   end
@@ -39,13 +39,11 @@ class Admin::ItemsController < ApplicationController
 
 
   private
+    def item_params
+      params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :sale_status)
+    end
 
-  def item_params
-    params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :sale_status)
-  end
-
-  def set_genres
-    @genres = Genre.all
-  end
-
+    def set_genres
+      @genres = Genre.all
+    end
 end

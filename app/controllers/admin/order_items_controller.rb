@@ -19,7 +19,7 @@ class Admin::OrderItemsController < ApplicationController
   end
 
   private
-  def order_item_params
-    params.require(:order_item).permit(:order_id, :item_id, :order_price, :count, :work_status)
-  end
+    def order_item_params
+      params.require(:order_item).permit(:order_id, :item_id, :order_price, :count, :work_status)
+    end
 end
