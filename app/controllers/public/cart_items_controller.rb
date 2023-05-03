@@ -1,23 +1,23 @@
 class Public::CartItemsController < ApplicationController
-   before_action :authenticate_customer!
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price}
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
-    #カート内に同じ商品がある場合
+    # カート内に同じ商品がある場合
     if current_customer.cart_items.find_by(item_id: params[:cart_item] [:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item] [:item_id])
       cart_item.count += params[:cart_item] [:count].to_i
       cart_item.save
       redirect_to cart_items_path
-    #カート内に同じ商品がない場合
+    # カート内に同じ商品がない場合
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
       redirect_to cart_items_path
-    #保存できなかった場合
+    # 保存できなかった場合
     else
       redirect_to request.referer, flash: { error: @cart_item.errors.full_messages }
     end
@@ -42,8 +42,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-
-  def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :count)
-  end
+    def cart_item_params
+      params.require(:cart_item).permit(:item_id, :customer_id, :count)
+    end
 end

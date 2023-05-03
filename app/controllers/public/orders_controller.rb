@@ -14,22 +14,22 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-   if @order.save
+    if @order.save
       current_customer.cart_items.each do |cart_item|
         @order_item = OrderItem.new
-        @order_item.order_id =  @order.id
+        @order_item.order_id = @order.id
         @order_item.item_id = cart_item.item_id
         @order_item.count = cart_item.count
-        @order_item.order_price = (cart_item.item.price*1.1).floor
+        @order_item.order_price = (cart_item.item.price * 1.1).floor
         @order_item.work_status = 0
         @order_item.save
       end
       current_customer.cart_items.destroy_all
       redirect_to orders_completed_path
-   else
-     @cart_items = current_customer.cart_items
-     render :confirm
-   end
+    else
+      @cart_items = current_customer.cart_items
+      render :confirm
+    end
   end
 
   def confirm
@@ -51,26 +51,24 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items
 
-   if @order.delivery_post_code && @order.delivery_address && @order.delivery_address_label && @order.pay_option
-     if @order.delivery_post_code =~ /\A[0-9]{7}\z/
-       render :confirm
-     else 
-       flash[:notice] = "・郵便番号が正しくありません"
-       redirect_to request.referer
-     end
-   else
-     flash[:notice] = "・未入力の項目があります"
-     redirect_to request.referer
-   end
-   
+    if @order.delivery_post_code && @order.delivery_address && @order.delivery_address_label && @order.pay_option
+      if /\A[0-9]{7}\z/.match?(@order.delivery_post_code)
+        render :confirm
+      else
+        flash[:notice] = "・郵便番号が正しくありません"
+        redirect_to request.referer
+      end
+    else
+      flash[:notice] = "・未入力の項目があります"
+      redirect_to request.referer
+    end
   end
 
   def completed
   end
 
   def index
-    @orders=current_customer.orders.all.page(params[:page]).per(10)
-
+    @orders = current_customer.orders.all.page(params[:page]).per(10)
   end
 
   def show
@@ -79,10 +77,7 @@ class Public::OrdersController < ApplicationController
   end
 
   private
-
-  def order_params
-    params.require(:order).permit(:customer_id, :shipping_fee, :total_price, :pay_option, :delivery_post_code, :delivery_address, :delivery_address_label, :order_status)
-  end
+    def order_params
+      params.require(:order).permit(:customer_id, :shipping_fee, :total_price, :pay_option, :delivery_post_code, :delivery_address, :delivery_address_label, :order_status)
+    end
 end
-
-
